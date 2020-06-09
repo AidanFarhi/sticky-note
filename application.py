@@ -53,5 +53,31 @@ def index():
 @app.route("/register", methods=["GET", "POST"])
 def register():
 
+    if request.method == "GET":
+        return render_template('register.html')
+
     if method == "POST":
+
+        # Get info from form
+        username = request.form.get("user-name")
+        password = request.form.get("password")
+
+        # No empty fields
+        if username is None:
+            return render_template('register.html', message='Cannot leave username field blank.')
+        if password is None:
+            return render_template('register.html', message="Cannot leave password field blank")
+
+        # Check if user already exists
+        if db.execute("SELECT * FROM users WHERE username = :username", {"username": username}).rowcount > 0:
+            return render_template('register.html', message="Username already exists")
+
+        # Commit user data to db
+        db.execute("INSERT INTO users(username, password) VALUES (:username :password)", {"username": username, "password": password})    
+        db.commit()
+
+        return render_template('index.html', message='Success! User has been created.')
+
+          
+
 
