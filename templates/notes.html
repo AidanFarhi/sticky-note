@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block content%}
+<body>
+
+    <h1>Your Notes</h1>
+
+    <div class="main-div" id="note-form">
+        <form id="new-note" action="{{ url_for( 'notes' ) }}" method="POST">
+            <h2>Add a note</h2>
+            <input type="text" name="text" id="text">
+            <button type="submit">Create</button>
+        </form>
+    </div>
+    <br>
+
+    <div class="container">
+        <tbody>
+        {% for note in notes %}
+            <div class="note">
+                <tr id="timestamp">
+                    <th>{{ note.timestamp }}</th>
+                </tr>
+                <br>
+                <tr>
+                    <td>{{ note.text }}</td>
+                </tr>
+                <br>
+            </div>
+        </tbody>
+        {% endfor %}
+    </div>
+
+    
+</body>
+{% endblock %}

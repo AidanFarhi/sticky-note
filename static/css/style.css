@@ -1,0 +1,26 @@
+.main-div {
+    margin: 0 auto;
+    margin-left: 20%;
+    margin-right: 20%;
+    text-align: center;
+    border: .5px solid grey;
+    border-radius: 3px;
+    padding-bottom: 15px;
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.note {
+    background-color: khaki;
+    text-align: center;
+    border: .5px solid grey;
+    border-radius: 3px;
+    margin: 5px 5px 5px 5px;
+    padding: 3px;
+}
+h2 {
+    border-bottom: .5px solid grey;
+    padding-bottom: 15px;
+}
